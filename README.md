@@ -96,7 +96,7 @@ The url to your repository and to your deployed project
 
 [Client repository Link](https://github.com/screeeen/project-client)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/lynn-w-b/van-swap-back-end)
 
 [Deployed App Link](http://heroku.com)
 
