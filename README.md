@@ -94,7 +94,7 @@ or picture of your physical board
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/screeeen/project-client)
+[Client repository Link](https://github.com/lynn-w-b/van-swap-front-end)
 
 [Server repository Link](https://github.com/lynn-w-b/van-swap-back-end)
 
