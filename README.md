@@ -65,20 +65,21 @@ Swap Request model
 | GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
 | POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user  
 
-| PUT         | `/auth/profile/edit/:id`      | {username, email, password, about, img}|200   |400           | edit profile
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user  |
 
-| DELETE      | `/auth/profile/delete/:id`    | {id}                         | 210            |400           | delete profile
+| PUT         | `/auth/profile/edit/:id`      | {username, email, password, about, img}|200   |400           | edit profile |
 
-| GET         | `/allvans    `                |                              |                | 400          | Show all vans                                        |
-| GET         | `/vans/:id`                   | {id}                         |                |              | Show specific van                                     |
-| POST        | `/vans/add-van`               | {}                           | 201            | 400          | Create and save a new van                             |
-| PUT         | `/vans/edit/:id`              | {make, model, year, img, location, about}| 200| 400          | edit van                                              |
-| DELETE      | `/vans/delete/:id`            | {id}                         | 201            | 400          | delete van                                            |
-| GET         | `/vans?location`              |  {location}                  |                | 400          | show vans filtered by location                                                    |
-| POST        | `/swap/add-request`           | {user, van, dates, additionalInfo}| 200       | 404          | add swap request                                                   |
-| PUT         | `/swap/accept-decline/:id`    | {accepted?}                  | 201            | 400          | accept or decline swap request                       
+| DELETE      | `/auth/profile/delete/:id`    | {id}                         | 210            |400           | delete profile |
+
+| GET         | `/allvans    `                |                              |                | 400          | Show all vans     |                                   
+| GET         | `/vans/:id`                   | {id}                         |                |              | Show specific van     |                                
+| POST        | `/vans/add-van`               | {}                           | 201            | 400          | Create and save a new van   |                          
+| PUT         | `/vans/edit/:id`              | {make, model, year, img, location, about}| 200| 400          | edit van       |                                       
+| DELETE      | `/vans/delete/:id`            | {id}                         | 201            | 400          | delete van      |                                      
+| GET         | `/vans?location`              |  {location}                  |                | 400          | show vans filtered by location   |                                                 
+| POST        | `/swap/add-request`           | {user, van, dates, additionalInfo}| 200       | 404          | add swap request     |                                              
+| PUT         | `/swap/accept-decline/:id`    | {accepted?}                  | 201            | 400          | accept or decline swap request   |                    
 
 <br>
 
