@@ -87,7 +87,7 @@ Swap Request model
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com/b/PBqtkUFX/curasan) 
+[Link to your trello board](https://trello.com/b/B24pd2i8/van-swap) 
 or picture of your physical board
 
 ### Git
@@ -104,8 +104,9 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1rz0FCZhx9SKnHqKoFFHeDqkVtWUyveraPv7WBL02TyA/edit?usp=sharing)
 
+https://www.figma.com/proto/FXTohkjAiYU6iRQCw49OAq/WireFrames?node-id=1%3A3&scaling=scale-down
 
 
 
