@@ -1,14 +1,10 @@
-# M3 - `README.md` Example
-
-<br>
-
-# Quick Compo
+# Van Swap - get off the beaten track
 
 <br>
 
 ## Description
 
-This is an app to manage unofficial tournaments within communities. The app helps to organize, manage and track competitions.
+This is an app to match camper van owners with each other to swap vans so that they can holiday for free in places they cannot drive to.
 
 
 # Server / Backend
@@ -23,49 +19,41 @@ User model
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  favorites: [Tournament]
+  about: {type: String, required: true},
+  img: {type: String},
+  vans: [{type: Schema.Types.ObjectId, ref:'Van']
 }
 ```
 
 
 
-Tournament model
+Van model
 
 ```javascript
  {
-   name: {type: String, required: true},
-   img: {type: String},
-   players: [{type: Schema.Types.ObjectId,ref:'Participant'}],
-   games: [{type: Schema.Types.ObjectId,ref:'Game'}]
+   make: {type: String, required: true},
+   model: {type: String, required: true},
+   year: {type: Number, required: true},
+   img: [{type: String}],
+   location: {type: String, required: true},
+   about: {type: String, required: true},
+   owner:{type: Schema.Types.ObjectId,ref:'User'}
  }
 ```
 
 
 
-Player model
+Swap Request model
 
 ```javascript
 {
-  name: {type: String, required: true},
-  img: {type: String},
-  score: []
+  user: {type: Schema.Types.ObjectId, ref:'User', required: true},
+  van: {type: Schema.Types.ObjectId, ref:'Van', required: true},
+  dates: {type: String, required: true},
+  additionalInfo: {type: String, required: true},
+  accepted?: {type: Boolean}
 }
 ```
-
-
-
-Game model
-
-```javascript
-{
-  player1: [{type: Schema.Types.ObjectId,ref:'Participant'}],
-  player2: [{type: Schema.Types.ObjectId,ref:'Player'}],
-  player2: [{type: Schema.Types.ObjectId,ref:'Player'}],
-  winner: {type: String},
-  img: {type: String}
-}
-```
-
 
 <br>
 
@@ -77,23 +65,20 @@ Game model
 | GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
 | POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET         | `/tournaments`                |                              |                | 400          | Show all tournaments                                         |
-| GET         | `/tournaments/:id`            | {id}                         |                |              | Show specific tournament                                     |
-| POST        | `/tournaments/add-tournament` | {}                           | 201            | 400          | Create and save a new tournament                             |
-| PUT         | `/tournaments/edit/:id`       | {name,img,players}           | 200            | 400          | edit tournament                                              |
-| DELETE      | `/tournaments/delete/:id`     | {id}                         | 201            | 400          | delete tournament                                            |
-| GET         | `/players`                    |                              |                | 400          | show players                                                 |
-| GET         | `/players/:id`                | {id}                         |                |              | show specific player                                         |
-| POST        | `/players/add-player`         | {name,img,tournamentId}      | 200            | 404          | add player                                                   |
-| PUT         | `/players/edit/:id`           | {name,img}                   | 201            | 400          | edit player                                                  |
-| DELETE      | `/players/delete/:id`         | {id}                         | 200            | 400          | delete player                                                |
-| GET         | `/games`                      | {}                           | 201            | 400          | show games                                                   |
-| GET         | `/games/:id`                  | {id,tournamentId}            |                |              | show specific game                                           |
-| POST        | `/games/add-game`             | {player1,player2,winner,img} |                |              | add game                                                     |
-| POST        | `/games/add-all-games`        |                              |                |              | add all games from a tournament. Gets a list of players and populates them via algorithm. |
-| PUT         | `/games/edit/:id`             | {winner,score}               |                |              | edit game                                                    |
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user  
 
+| PUT         | `/auth/profile/edit/:id`      | {username, email, password, about, img}|200   |400           | edit profile
+
+| DELETE      | `/auth/profile/delete/:id`    | {id}                         | 210            |400           | delete profile
+
+| GET         | `/allvans    `                |                              |                | 400          | Show all vans                                        |
+| GET         | `/vans/:id`                   | {id}                         |                |              | Show specific van                                     |
+| POST        | `/vans/add-van`               | {}                           | 201            | 400          | Create and save a new van                             |
+| PUT         | `/vans/edit/:id`              | {make, model, year, img, location, about}| 200| 400          | edit van                                              |
+| DELETE      | `/vans/delete/:id`            | {id}                         | 201            | 400          | delete van                                            |
+| GET         | `/vans?location`              |  {location}                  |                | 400          | show vans filtered by location                                                    |
+| POST        | `/swap/add-request`           | {user, van, dates, additionalInfo}| 200       | 404          | add swap request                                                   |
+| PUT         | `/swap/accept-decline/:id`    | {accepted?}                  | 201            | 400          | accept or decline swap request                       
 
 <br>
 
