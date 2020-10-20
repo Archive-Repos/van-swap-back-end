@@ -103,7 +103,7 @@ The url to your presentation slides
 
 [Van Swap Slides](https://docs.google.com/presentation/d/1rz0FCZhx9SKnHqKoFFHeDqkVtWUyveraPv7WBL02TyA/edit?usp=sharing)
 
-[Wireframes] (https://www.figma.com/proto/FXTohkjAiYU6iRQCw49OAq/WireFrames?node-id=1%3A3&scaling=scale-down)
+[Wireframes](https://www.figma.com/proto/FXTohkjAiYU6iRQCw49OAq/WireFrames?node-id=1%3A3&scaling=scale-down)
 
 
 
